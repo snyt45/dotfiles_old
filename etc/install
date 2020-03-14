@@ -63,6 +63,7 @@ do
     # 不要なドットファイルを対象から除外する
     [ "$f" = ".git" ] && continue
     [ "$f" = ".gitignore" ] && continue
+    [ "$f" = ".gitignore_global" ] && continue
     [ "$f" = ".DS_Store" ] && continue
 
     # ln [オプション] リンク元 リンク先
