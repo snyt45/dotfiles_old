@@ -62,6 +62,7 @@ do
     # 一致したら、シンボリックリンクを作成せずに次の処理に移る
     # 不要なドットファイルを対象から除外する
     [ "$f" = ".git" ] && continue
+    [ "$f" = ".gitignore" ] && continue
     [ "$f" = ".DS_Store" ] && continue
 
     # ln [オプション] リンク元 リンク先
