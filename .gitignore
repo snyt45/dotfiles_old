@@ -11,3 +11,5 @@
 # .gitignoreは上から解釈されていくので
 # 管理対象のファイルをホワイトリストのように追記
 !.gitignore
+!/etc
+!Makefile
