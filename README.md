@@ -5,6 +5,12 @@
 bash -c "$(curl -L raw.githubusercontent.com/snyt45/dotfiles/master/etc/install)"
 ```
 
+一度は通しで下記も行う。
+```
+make update
+make deploy
+```
+
 ## 運用方法 〜準備〜
 * makeコマンドを使うので、makeコマンドが使えるようにしておく。
 
