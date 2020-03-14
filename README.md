@@ -39,6 +39,7 @@ make update
  make deploy
  ```
  
+## その他
 ### リモートリポジトリの最新化
 リモートリポジトリの最新化については、普通にgit pushして行う。
 
@@ -97,3 +98,17 @@ not ignoreに管理対象としたいものを追記していく。
 !/.zfunc/    # ディレクトリの中身全てを管理対象として、
 /.zfunc/**   # ディレクトリの中身を管理対象外とする
 ```
+
+### hyper.jsのクロスプラットフォーム対応
+hyper.jsのデフォルトシェルの設定のみ、WindowsとMacで異なる。
+下記を参考にシェルスクリプトを使って対応。
+`make deploy`時に、hyper.jsが生成されるようにしている。
+[Hyperターミナルの設定ファイルをWindows/Macで共通化してGit管理する \- Qiita](https://qiita.com/suzuki_sh/items/45ad7e98280539ad374d)
+
+# 参考
+・makefileの構成やdotfilesのディレクトリ構成等ほとんど参考にさせていただきました。
+[最強の dotfiles 駆動開発と GitHub で管理する運用方法 \- Qiita](https://qiita.com/b4b4r07/items/b70178e021bef12cd4a2)
+[優れた dotfiles を設計して、最速で環境構築する話 \- Qiita](https://qiita.com/b4b4r07/items/24872cdcbec964ce2178)
+
+・.gitignoreと.gitignore_globalの導入について参考にさせていただきました。
+[ようこそdotfilesの世界へ \- Qiita](https://qiita.com/yutakatay/items/c6c7584d9795799ee164#dotfiles%E7%94%A8%E3%81%AEgitignore%E3%81%AE%E8%A8%AD%E5%AE%9A)
