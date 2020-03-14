@@ -1,5 +1,5 @@
 # 除外リスト
-DOTFILES_EXCEPT := .DS_Store .git .gitmodules
+DOTFILES_EXCEPT := .DS_Store .git .gitmodules .gitignore
 # 対象リスト
 DOTFILES_TARGET := $(wildcard .??*) bin
 # ドットファイルディレクトリ
