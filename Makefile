@@ -1,5 +1,5 @@
 # 除外リスト
-DOTFILES_EXCEPT := .DS_Store .git .gitmodules .gitignore
+DOTFILES_EXCEPT := .DS_Store .git .gitmodules .gitignore .gitignore_global
 # 対象リスト
 DOTFILES_TARGET := $(wildcard .??*) bin
 # ドットファイルディレクトリ
@@ -24,6 +24,6 @@ update:
 
 # デプロイ
 deploy:
-	hyper_js_generate # Run make hyper_js_generate
+	@make hyper_js_generate # Run make hyper_js_generate
 	@$(foreach val, $(DOTFILES_FILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
