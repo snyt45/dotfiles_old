@@ -17,7 +17,7 @@ if [ "$(uname)" == "Darwin" ]; then
   ln -snfv "$DOTPATH/$OTHER_HYPER_JS" "$HOME/$HYPER_JS"
 elif [ "$(expr substr $(uname -s) 1 5)" == "MINGW" ]; then
   echo Windows
-  ln -snfv "$DOTPATH/$WINDOWS_HYPER_JS=" "$HOME/$HYPER_JS"
+  ln -snfv "$DOTPATH/$WINDOWS_HYPER_JS" "$HOME/$HYPER_JS"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   echo Linux
   ln -snfv "$DOTPATH/$OTHER_HYPER_JS" "$HOME/$HYPER_JS"

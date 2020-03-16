@@ -27,3 +27,9 @@ deploy:
 	@make hyper_js_generate # Run make hyper_js_generate
 	@$(foreach val, $(DOTFILES_FILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
+# 初期化
+# すでに~/配下にbinフォルダがある場合､デプロイ時に~/bin/binとなることがあった｡
+# そのため､ホームディレクトリを対象としたinitコマンドを作成
+# あとで整理する予定
+init:
+	rm -r $(HOME)/bin
