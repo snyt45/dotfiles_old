@@ -7,6 +7,7 @@ bash -c "$(curl -L raw.githubusercontent.com/snyt45/dotfiles/master/etc/install)
 
 一度は通しで下記も行う。
 ```
+make init
 make update
 make deploy
 ```
@@ -26,6 +27,15 @@ cd ~/.dotfiles
 
 ## 運用方法
 基本は、更新してデプロイする。
+
+### 初期化(暫定)
+暫定運用だが､windowsで試した際にホームディレクトリ/binフォルダがあったため､
+デプロイ時にホームディレクトリ/bin/binにシンボリックリンクが展開したことがあった｡
+そのため､initコマンドを作り､ホームディレクトリ/binフォルダを削除するコマンドを作った｡
+
+```
+make init
+```
 
 ### 更新
 リモートリポジトリからドットファイルの最新情報をダウンロードして、ローカルリポジトリのドットファイルにマージ
