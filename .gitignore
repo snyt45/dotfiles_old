@@ -15,5 +15,7 @@
 !/bin
 !/config
 !/.gitignore_global
+!/.vimrc
+!/.bashrc
 
 !.gitignore

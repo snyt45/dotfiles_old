@@ -94,7 +94,6 @@ module.exports = {
     "hyper-material-theme",
     "hyper-tab-icons-plus",
     "hyperterm-summon",
-    "hyper-pane",
     "hyper-broadcast",
     "hypercwd"
   ],
@@ -108,34 +107,6 @@ module.exports = {
   keymaps: {
   },
 
-
-//////////////////////////////////////
-// hyper-pane
-//////////////////////////////////////
-  paneNavigation: {
-    debug: false,
-    hotkeys: {
-      navigation: {
-        up: 'ctrl+alt+up',
-        down: 'ctrl+alt+down',
-        left: 'ctrl+alt+left',
-        right: 'ctrl+alt+right'
-      },
-      jump_prefix: 'ctrl+alt',
-      permutation_modifier: 'shift',
-      maximize: 'meta+enter'
-    },
-    showIndicators: true,
-    indicatorPrefix: '^⌥',
-    indicatorStyle: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      fontSize: '10px'
-    },
-    focusOnMouseHover: true,
-    inactivePaneOpacity: 0.7
-  },
 
 //////////////////////////////////////
 // hyper-material-theme
