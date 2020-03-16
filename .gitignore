@@ -12,6 +12,7 @@
 # 管理対象のファイルをホワイトリストのように追記
 !/etc
 !Makefile
+!/bin
 !/config
 !/.gitignore_global
 
