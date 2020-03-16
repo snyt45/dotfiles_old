@@ -1,7 +1,6 @@
 // Future versions of Hyper may add additional config options,
 // which will not automatically be merged into this file.
 // See https://hyper.is#cfg for all currently supported options.
-// 変更は反映されるのか？
 module.exports = {
   config: {
     // choose either `'stable'` for receiving highly polished,
@@ -118,11 +117,11 @@ module.exports = {
     // Git Bash
     // - Example: `C:\\Program Files\\Git\\git-cmd.exe`
     // Then Add `--command=usr/bin/bash.exe` to shellArgs
-    shell: '',
+    shell: 'C:\\git-sdk-64\\git-cmd.exe',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
     // by default `['--login']` will be used
-    shellArgs: ['--login'],
+    shellArgs: ['--command=usr/bin/bash.exe', '-l', '-i'],
 
     // for environment variables
     env: {},
@@ -166,7 +165,7 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: [],
+  plugins: ["hyper-material-theme"],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
