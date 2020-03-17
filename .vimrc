@@ -95,6 +95,12 @@ if neobundle#is_installed('vim-fugitive')
 endif
 
 "----------------------------------------------------------
+" デフォルトのファイラー
+"----------------------------------------------------------
+" デフォルトをVimfilerにする｡:e .でvimfilerが開けるようになる｡
+let g:vimfiler_as_default_explorer = 1
+
+"----------------------------------------------------------
 " キーマッピング(ノーマルモード)
 "----------------------------------------------------------
 " ウィンドウを下に移動
@@ -111,15 +117,12 @@ nnoremap se :<C-u>sp<CR>
 nnoremap sd :<C-u>vs<CR>
 " 選択しているバッファ以外を閉じる
 nnoremap <silent> <Space>o  :only<CR>
-
-if neobundle#is_installed('vim-fugitive')
-  " 過去の変更を辿る
-  nnoremap <silent> <Space>gb :Gblame<CR>
-  " 差分を表示する
-  nnoremap <silent> <Space>gd :Gdiff<CR>
-  " ステータス画面を開く
-  nnoremap <silent> <Space>gs :Gstatus<CR>
-endif
+" GIt 過去の変更を辿る
+nnoremap <silent> <Space>gb :Gblame<CR>
+" Git 差分を表示する
+nnoremap <silent> <Space>gd :Gdiff<CR>
+" Git ステータス画面を開く
+nnoremap <silent> <Space>gs :Gstatus<CR>
 
 "----------------------------------------------------------
 " 自動コマンド
