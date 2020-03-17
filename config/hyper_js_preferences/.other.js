@@ -31,9 +31,9 @@ module.exports = {
     backgroundColor: '#000',
     // ターミナルでのテキスト選択の背景色/不透明度
     selectionColor: 'rgba(248,28,229,0.3)',
-    // メインウィンドウの境界線とタブバーの色 
+    // メインウィンドウの境界線とタブバーの色
     borderColor: '#333',
-    // カスタムCSS 
+    // カスタムCSS
     css: '',
     termCSS: '',
     // スタート時の作業ディレクトリ
@@ -111,7 +111,7 @@ module.exports = {
 //////////////////////////////////////
 // hyper-material-theme
 //////////////////////////////////////
-  MaterialTheme: { 
+  MaterialTheme: {
      theme: 'Palenightr',
      backgroundOpacity: '0.7',
      accentColor: '#64FFDA',

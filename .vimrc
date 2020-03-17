@@ -33,6 +33,22 @@ NeoBundleCheck
 filetype plugin indent on
 
 "----------------------------------------------------------
+" 文字コード
+"----------------------------------------------------------
+" ファイル読み込み時の文字コード
+set encoding=utf-8
+" Vim Script内でマルチバイト文字を使う設定
+scriptencoding utf-8
+" 保存時の文字コード
+set fileencoding=utf-8
+" 読み込み時の文字コードの自動判別. 左側が優先される
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+" 改行コードの自動判別. 左側が優先される
+set fileformats=unix,dos,mac
+" □や○文字が崩れる問題を解決
+set ambiwidth=double
+
+"----------------------------------------------------------
 " スワップファイルを作成しない
 "----------------------------------------------------------
 " viminfo ファイルを作成しない
@@ -56,8 +72,33 @@ set clipboard=unnamed,autoselect
 set number
 
 "----------------------------------------------------------
-" vim-fugitive
+" ステータスライン
 "----------------------------------------------------------
-"vimのステータスラインに現在のブランチ名を表示
+" ステータスラインを常に表示
 set laststatus=2
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ \[ENC=%{&fileencoding}]%P
+" 現在のモードを表示
+set showmode
+" 打ったコマンドをステータスラインの下に表示
+set showcmd
+" ステータスラインの右側にカーソルの位置を表示する
+set ruler
+" ステータスラインに現在のgitブランチを表示する
+if neobundle#is_installed('vim-fugitive')
+  set statusline+=%{fugitive#statusline()}
+endif
+
+"----------------------------------------------------------
+" キーマッピング(ノーマルモード)
+"----------------------------------------------------------
+" ウィンドウを下に移動
+nnoremap sj <C-w>j
+" ウィンドウを上に移動
+nnoremap sk <C-w>k
+" ウィンドウを右に移動
+nnoremap sl <C-w>l
+" ウィンドウを左に移動
+nnoremap sh <C-w>h
+" ウィンドウを水平分割(Hyperのキーマッピングに合わせる)
+nnoremap se :<C-u>sp<CR>
+" ウィンドウを垂直分割(Hyperのキーマッピングに合わせる)
+nnoremap sd :<C-u>vs<CR>
