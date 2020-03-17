@@ -120,3 +120,9 @@ if neobundle#is_installed('vim-fugitive')
   " ステータス画面を開く
   nnoremap <silent> <Space>gs :Gstatus<CR>
 endif
+
+"----------------------------------------------------------
+" 自動コマンド
+"----------------------------------------------------------
+" :Unite bookmark後にEnter押下でそのディレクトリをVimfilerで開く
+autocmd FileType vimfiler call unite#custom_default_action('directory', 'cd')
