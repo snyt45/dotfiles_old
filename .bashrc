@@ -20,3 +20,26 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
 else
   echo Unknown OS
 fi
+
+#--------------------------------------------------
+# エイリアス
+#--------------------------------------------------
+
+###
+# Vimfiler(VimのプラグインVimFilerに依存)
+###
+
+# VimFilerを開く
+alias vf='vim +VimFiler'
+
+###
+# Fugitive(VimのプラグインFugitiveに依存)
+###
+
+# Git 過去の変更を辿る
+# alias gb='vim +Gblame'
+# Git 差分を表示する
+# alias gd='vim +Gdiff'
+# Git ステータス画面を開く
+alias gs='vim +Gstatus'
+

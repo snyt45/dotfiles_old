@@ -21,6 +21,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'tpope/vim-fugitive'
 " 末尾の全角半角空白文字を赤くハイライト
 NeoBundle 'bronson/vim-trailing-whitespace'
+" vim 用の統合ユーザインターフェース
+NeoBundle 'Shougo/unite.vim'
+" vimで非同期処理を実現する
+NeoBundle 'Shougo/vimproc'
+" ファイル操作をサポート(unite.vimとvimprocに依存)
+NeoBundle 'Shougo/vimfiler'
+" スクロール操作をなめらかにする
+NeoBundle 'yuttie/comfortable-motion.vim'
 
 call neobundle#end()
 
@@ -65,7 +73,6 @@ set nobackup
 " Ctrl+c、Ctrl+v有効
 set clipboard=unnamed,autoselect
 
-
 "----------------------------------------------------------
 " 行番号の表示
 "----------------------------------------------------------
@@ -102,3 +109,14 @@ nnoremap sh <C-w>h
 nnoremap se :<C-u>sp<CR>
 " ウィンドウを垂直分割(Hyperのキーマッピングに合わせる)
 nnoremap sd :<C-u>vs<CR>
+" 選択しているバッファ以外を閉じる
+nnoremap <silent> <Space>o  :only<CR>
+
+if neobundle#is_installed('vim-fugitive')
+  " 過去の変更を辿る
+  nnoremap <silent> <Space>gb :Gblame<CR>
+  " 差分を表示する
+  nnoremap <silent> <Space>gd :Gdiff<CR>
+  " ステータス画面を開く
+  nnoremap <silent> <Space>gs :Gstatus<CR>
+endif
