@@ -93,9 +93,6 @@ module.exports = {
   plugins: [
     "hyper-material-theme",
     "hyper-tab-icons-plus",
-    "hyperterm-summon",
-    "hyper-broadcast",
-    "hypercwd"
   ],
 
   // ローカルプラグイン
