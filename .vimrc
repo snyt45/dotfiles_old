@@ -29,6 +29,8 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/vimfiler'
 " スクロール操作をなめらかにする
 NeoBundle 'yuttie/comfortable-motion.vim'
+" ウィンドウサイズの変更を簡単・高速にする
+NeoBundle 'simeji/winresizer'
 
 call neobundle#end()
 
@@ -129,3 +131,9 @@ nnoremap <silent> <Space>gs :Gstatus<CR>
 "----------------------------------------------------------
 " :Unite bookmark後にEnter押下でそのディレクトリをVimfilerで開く
 autocmd FileType vimfiler call unite#custom_default_action('directory', 'cd')
+
+"----------------------------------------------------------
+" ctagsのtagsファイル読み込み
+"----------------------------------------------------------
+set tags=./.tags;
+
