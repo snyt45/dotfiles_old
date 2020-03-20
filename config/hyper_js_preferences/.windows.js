@@ -66,7 +66,7 @@ module.exports = {
       lightCoral: '#F08080',
     },
     // デフォルトシェル
-    shell: 'C:\\git-sdk-64\\git-cmd.exe',
+    shell: 'C:\\Program Files\\Git\\git-cmd.exe',
     // シェル起動時の引数
     shellArgs: ['--command=usr/bin/bash.exe', '-l', '-i'],
     // 環境変数
@@ -93,6 +93,7 @@ module.exports = {
   plugins: [
     "hyper-material-theme",
     "hyper-tab-icons-plus",
+    "hyper-search",
   ],
 
   // ローカルプラグイン
