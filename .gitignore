@@ -17,5 +17,6 @@
 !/.gitignore_global
 !/.vimrc
 !/.bashrc
+!/.bash_profile
 
 !.gitignore
