@@ -18,5 +18,6 @@
 !/.vimrc
 !/.bashrc
 !/.bash_profile
+!/.tmux.conf
 
 !.gitignore

@@ -19,8 +19,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 " vim用のGitコマンドを追加
 NeoBundle 'tpope/vim-fugitive'
-" 末尾の全角半角空白文字を赤くハイライト
-NeoBundle 'bronson/vim-trailing-whitespace'
 " vim 用の統合ユーザインターフェース
 NeoBundle 'Shougo/unite.vim'
 " vimで非同期処理を実現する
@@ -57,6 +55,14 @@ set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 set fileformats=unix,dos,mac
 " □や○文字が崩れる問題を解決
 set ambiwidth=double
+
+"----------------------------------------------------------
+" 文字
+"----------------------------------------------------------
+" list モードを設定。タブや改行文字、末尾の半角スペースなど、通常は非表示の文字を目に見える記号で表示
+set list
+" 行末を'↲'、タブを'>'、末尾のスペースを'_'で表示
+set listchars=eol:↲,tab:>.,trail:_
 
 "----------------------------------------------------------
 " スワップファイルを作成しない
@@ -105,6 +111,9 @@ let g:vimfiler_as_default_explorer = 1
 "----------------------------------------------------------
 " キーマッピング(ノーマルモード)
 "----------------------------------------------------------
+"===========================
+" ウィンドウ移動
+"===========================
 " ウィンドウを下に移動
 nnoremap sj <C-w>j
 " ウィンドウを上に移動
@@ -113,18 +122,45 @@ nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 " ウィンドウを左に移動
 nnoremap sh <C-w>h
-" ウィンドウを水平分割(Hyperのキーマッピングに合わせる)
-nnoremap se :<C-u>sp<CR>
-" ウィンドウを垂直分割(Hyperのキーマッピングに合わせる)
-nnoremap sd :<C-u>vs<CR>
+
+"===========================
+" ウィンドウ分割
+"===========================
+" ウィンドウを水平分割
+nnoremap ss :<C-u>sp<CR>
+" ウィンドウを垂直分割
+nnoremap sv :<C-u>vs<CR>
+
+"===========================
+" タブ移動
+"===========================
+" 前のタブに移動
+nmap <S-Tab> :tabprev<Return>
+" 次のタブに移動
+nmap <Tab> :tabnext<Return>
+
+"===========================
+" バッファ
+"===========================
 " 選択しているバッファ以外を閉じる
 nnoremap <silent> <Space>o  :only<CR>
-" GIt 過去の変更を辿る
+
+"===========================
+" fugitive.vim
+"===========================
+" Git 過去の変更を辿る
 nnoremap <silent> <Space>gb :Gblame<CR>
 " Git 差分を表示する
 nnoremap <silent> <Space>gd :Gdiff<CR>
 " Git ステータス画面を開く
 nnoremap <silent> <Space>gs :Gstatus<CR>
+
+"===========================
+" vimfiler
+"===========================
+nmap sf :VimFilerBufferDir<Return>
+nmap sF :VimFilerExplorer -find<Return>
+nmap sb :Unite buffer<Return>
 
 "----------------------------------------------------------
 " 自動コマンド
@@ -136,4 +172,15 @@ autocmd FileType vimfiler call unite#custom_default_action('directory', 'cd')
 " ctagsのtagsファイル読み込み
 "----------------------------------------------------------
 set tags=./.tags;
+
+"----------------------------------------------------------
+" vimfiler
+"----------------------------------------------------------
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_enable_auto_cd = 0
+let g:vimfiler_tree_leaf_icon = ''
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_marked_file_icon = '✓'
 
