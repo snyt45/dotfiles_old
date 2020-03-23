@@ -28,7 +28,7 @@ if is_exists "git"; then
     # git clone --recursiveは下記のコマンドと同義
     # git submodule init
     # git submodule update
-    git clone --recursive "$DOTFILES_GITHUB" "$DOTPATH"
+    git clone -c core.symlinks=true --recursive "$DOTFILES_GITHUB" "$DOTPATH"
 # curl または wget が存在すれば、それを使う
 elif is_exists "curl" || is_exists "wget"; then
     local tarball="https://github.com/snyt45/dotfiles/archive/master.tar.gz"
