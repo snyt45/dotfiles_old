@@ -114,6 +114,12 @@ endif
 set mouse=a
 
 "----------------------------------------------------------
+" 警告
+"----------------------------------------------------------
+" 無視する
+set hidden
+
+"----------------------------------------------------------
 " 警告音
 "----------------------------------------------------------
 " 無効にする
@@ -166,6 +172,10 @@ nmap <Tab> :tabnext<Return>
 "===========================
 " 選択しているバッファ以外を閉じる
 nnoremap <silent> <Space>o  :only<CR>
+" 次のバッファを開く
+nnoremap <silent> <C-j> :bprev<CR>
+" 前のバッファを開く
+nnoremap <silent> <C-k> :bnext<CR>
 
 "===========================
 " ハイライト
@@ -189,6 +199,14 @@ nnoremap <silent> <Space>gs :Gstatus<CR>
 nmap sf :VimFilerBufferDir<Return>
 nmap sF :VimFilerExplorer -find<Return>
 nmap sb :Unite buffer<Return>
+
+"----------------------------------------------------------
+" キーマッピング(インサートモード)
+"----------------------------------------------------------
+" jjでインサートモードを抜ける
+inoremap <silent> jj <ESC>
+" 日本語入力で”っj”と入力してもEnterキーで確定させればインサートモードを抜ける
+inoremap <silent> っj <ESC>
 
 "----------------------------------------------------------
 " 自動コマンド
@@ -222,8 +240,6 @@ set updatetime=250
 "------------------------------------
 " Unit.vim
 "------------------------------------
-" 入力モードで開始する
-let g:unite_enable_start_insert=1
 " 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
@@ -237,8 +253,20 @@ nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W
 nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 " unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
+  " デフォルトのgrepコマンドをagにする
   let g:unite_source_grep_command = 'ag'
+  " grep時のデフォルトオプションを設定
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  " grep時の再帰オプションを設定
   let g:unite_source_grep_recursive_opt = ''
 endif
 
+"------------------------------------
+" ctrlp.vim
+"------------------------------------
+" ag入ってたらagで検索させる
+" ついでにキャッシュファイルからの検索もさせない
+if executable('ag')
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
+endif
