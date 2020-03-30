@@ -29,6 +29,12 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'yuttie/comfortable-motion.vim'
 " ウィンドウサイズの変更を簡単・高速にする
 NeoBundle 'simeji/winresizer'
+" Gitで管理しているファイル編集時に差分を表現する記号が左端に表示
+NeoBundle 'airblade/vim-gitgutter'
+" Agで高速grep
+NeoBundle 'rking/ag.vim'
+" Ctrl+pでカレントディレクトリのファイル名絞り込み
+NeoBundle "ctrlpvim/ctrlp.vim"
 
 call neobundle#end()
 
@@ -103,6 +109,22 @@ if neobundle#is_installed('vim-fugitive')
 endif
 
 "----------------------------------------------------------
+" マウス操作
+"----------------------------------------------------------
+set mouse=a
+
+"----------------------------------------------------------
+" 警告音
+"----------------------------------------------------------
+" 無効にする
+set belloff=all
+
+"----------------------------------------------------------
+" ハイライト
+"----------------------------------------------------------
+set hlsearch
+
+"----------------------------------------------------------
 " デフォルトのファイラー
 "----------------------------------------------------------
 " デフォルトをVimfilerにする｡:e .でvimfilerが開けるようになる｡
@@ -146,6 +168,12 @@ nmap <Tab> :tabnext<Return>
 nnoremap <silent> <Space>o  :only<CR>
 
 "===========================
+" ハイライト
+"===========================
+" Esc連打でハイライト解除
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+"===========================
 " fugitive.vim
 "===========================
 " Git 過去の変更を辿る
@@ -183,4 +211,34 @@ let g:vimfiler_tree_leaf_icon = ''
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_marked_file_icon = '✓'
+
+"----------------------------------------------------------
+" vim-gitgutte
+"----------------------------------------------------------
+" 記号更新のタイミング
+set updatetime=250
+
+
+"------------------------------------
+" Unit.vim
+"------------------------------------
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+" grep検索
+nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+" ディレクトリを指定してgrep検索
+nnoremap <silent> ,dg  :<C-u>Unite grep -buffer-name=search-buffer<CR>
+" カーソル位置の単語をgrep検索
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+" grep検索結果の再呼出
+nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
 
