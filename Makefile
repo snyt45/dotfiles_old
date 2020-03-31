@@ -6,6 +6,9 @@ DOTFILES_TARGET := $(wildcard .??*) bin
 DOTFILES_DIR := $(PWD)
 # 対象リストから除外リストを除外したリスト
 DOTFILES_FILES := $(filter-out $(DOTFILES_EXCEPT), $(DOTFILES_TARGET))
+# ホームディレクトリ
+# $(変数名:置換する文字列=置換後)
+HOME_DIR := $(DOTFILES_DIR:/.dotfiles=)
 
 ###################################################
 # makeコマンド
@@ -25,11 +28,5 @@ update:
 # デプロイ
 deploy:
 	@make hyper_js_generate # Run make hyper_js_generate
-	@$(foreach val, $(DOTFILES_FILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+	@$(foreach val, $(DOTFILES_FILES), ln -sfnv $(DOTFILES_DIR)/$(val) $(HOME_DIR)/$(val);)
 
-# 初期化
-# すでに~/配下にbinフォルダがある場合､デプロイ時に~/bin/binとなることがあった｡
-# そのため､ホームディレクトリを対象としたinitコマンドを作成
-# あとで整理する予定
-init:
-	rm -r $(HOME)/bin
