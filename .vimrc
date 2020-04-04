@@ -47,8 +47,6 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kannokanno/previm'
 " Marddownの表作成
 NeoBundle 'mattn/vim-maketable'
-" Marddownの表整形
-NeoBundle 'kannokanno/previm'
 " コード整形
 NeoBundle 'prettier/vim-prettier'
 " ○------------------------------- ○
@@ -191,11 +189,11 @@ nnoremap sv :<C-u>vs<CR>
 "*
 " バッファ
 "--------------------------------------------------------------- *
-" 選択しているバッファ以外を閉じる
+" カレントバッファ以外を閉じる
 nnoremap <silent> <Space>o :only<CR>
-" 次のバッファを開く
+" 次のバッファ
 nnoremap <silent> <C-j> :bprev<CR>
-" 前のバッファを開く
+" 前のバッファ
 nnoremap <silent> <C-k> :bnext<CR>
 
 
@@ -298,10 +296,11 @@ set updatetime=250
 "--------------------------------------------------------------- *
 " open-browserを使う
 let g:previm_open_cmd = ''
+
 " 何もしないキーを設定
 nnoremap [previm] <Nop>
 " [previm] に スペース + pを割り当て
-nnoremap <Space>p [previm]
+nmap <Space>p [previm]
 " prefix + o でブラウザプレビュー
 nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
 " prefix + r でブラウザリロード
@@ -312,4 +311,16 @@ nnoremap <silent> [previm]r :call previm#refresh()<CR>
 "--------------------------------------------------------------- *
 " カレントディレクトリの.tasを読込
 set tags=./.tags;
+
+"*
+" vim-maketable
+"--------------------------------------------------------------- *
+" 最初の行をテーブルのヘッダーとして使用
+vnoremap <Space>t :MakeTable!<CR>
+
+"*
+" prettier
+"--------------------------------------------------------------- *
+" コード整形
+vnoremap pre :Prettier<CR>
 
