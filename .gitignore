@@ -19,5 +19,6 @@
 !/.bashrc
 !/.bash_profile
 !/.tmux.conf
+!/cheatsheets
 
 !.gitignore
