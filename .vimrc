@@ -35,6 +35,16 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'rking/ag.vim'
 " Ctrl+pでカレントディレクトリのファイル名絞り込み
 NeoBundle "ctrlpvim/ctrlp.vim"
+" ブラウザでMarkdownプレビュー用
+NeoBundle 'tyru/open-browser.vim'
+" Markdownプレビュー
+NeoBundle 'kannokanno/previm'
+" Marddownの表作成
+NeoBundle 'mattn/vim-maketable'
+" Marddownの表整形
+NeoBundle 'kannokanno/previm'
+" コード整形
+NeoBundle 'prettier/vim-prettier'
 
 call neobundle#end()
 
@@ -139,6 +149,19 @@ let g:vimfiler_as_default_explorer = 1
 "----------------------------------------------------------
 " キーマッピング(ノーマルモード)
 "----------------------------------------------------------
+
+"===========================
+" 設定ファイル呼び出し
+"===========================
+" .vimrcを \ev で開く
+nnoremap <Leader>ev :e ~/.dotfiles/.vimrc<CR>
+" .tmux.confを \et で開く
+nnoremap <Leader>et :e ~/.dotfiles/.tmux.conf<CR>
+" .bashrcを \eb で開く
+nnoremap <Leader>eb :e ~/.dotfiles/.bashrc<CR>
+" .bash_profileを \ep で開く
+nnoremap <Leader>ep :e ~/.dotfiles/.bash_profile<CR>
+
 "===========================
 " ウィンドウ移動
 "===========================
@@ -270,3 +293,13 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
 endif
+
+
+"------------------------------------
+" Previm
+"------------------------------------
+let g:previm_open_cmd = ''
+nnoremap [previm] <Nop>
+nmap <Space>p [previm]
+nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
+nnoremap <silent> [previm]r :call previm#refresh()<CR>

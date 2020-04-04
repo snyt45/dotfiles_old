@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cheatsheet=~/.dotfiles/cheatsheets/cheatsheet.md
+
+vim ${cheatsheet} -c :PrevimOpen
