@@ -49,6 +49,13 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'mattn/vim-maketable'
 " コード整形
 NeoBundle 'prettier/vim-prettier'
+
+" コードの自動補完
+NeoBundle 'Shougo/deoplete.nvim'
+" vim8でdeopleteを使うのに必要
+NeoBundle 'roxma/nvim-yarp'
+" vim8でdeopleteを使うのに必要
+NeoBundle 'roxma/vim-hug-neovim-rpc'
 " ○------------------------------- ○
 
 call neobundle#end()
@@ -91,6 +98,8 @@ set listchars=eol:↲,tab:>.,trail:_
 set number
 " ハイライト表示
 set hlsearch
+" シンタックスハイライト
+syntax on
 
 "*
 " ステータスライン
@@ -324,3 +333,8 @@ vnoremap <Space>t :MakeTable!<CR>
 " コード整形
 vnoremap pre :Prettier<CR>
 
+"*
+" deoplete
+"--------------------------------------------------------------- *
+" 起動時に有効
+let g:deoplete#enable_at_startup = 1
