@@ -207,6 +207,22 @@ nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 
 "*
+" タブ
+"--------------------------------------------------------------- *
+" 次のタブ
+nnoremap <silent> tl :tabnext<CR>
+" 前のタブ
+nnoremap <silent> th :tabprevious<CR>
+" 新規タブ
+nnoremap <silent> tn :tablast <bar> tabnew<CR>
+" タブを閉じる
+nnoremap <silent> tx :tabclose<CR>
+" タブを右に移動
+nnoremap <silent> <C-l> :+tabmove<CR>
+" タブを左に移動
+nnoremap <silent> <C-h> :-tabmove<CR>
+
+"*
 " バッファ
 "--------------------------------------------------------------- *
 " カレントバッファ以外を閉じる
