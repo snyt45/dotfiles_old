@@ -121,19 +121,20 @@
 
 #### pain
 
-| Command      | Info         | star |
-| ------------ | ------------ | ---- |
-| prefix + h   | 左に移動     | ★★★  |
-| prefix + j   | 下に移動     | ★★★  |
-| prefix + k   | 上に移動     | ★★★  |
-| prefix + l   | 右に移動     | ★★★  |
-| prefix + H   | 左にリサイズ | ★★☆  |
-| prefix + J   | 下にリサイズ | ★★☆  |
-| prefix + K   | 上にリサイズ | ★★☆  |
-| prefix + L   | 右にリサイズ | ★★☆  |
-| prefix + v   | 垂直分割     | ★★☆  |
-| prefix + s   | 水平分割     | ★★☆  |
-| prefix + C-k | ペインをキル | ★★☆  |
+| Command      | Info             | star |
+| ------------ | ---------------- | ---- |
+| prefix + h   | 左に移動         | ★★★  |
+| prefix + j   | 下に移動         | ★★★  |
+| prefix + k   | 上に移動         | ★★★  |
+| prefix + l   | 右に移動         | ★★★  |
+| prefix + H   | 左にリサイズ     | ★★☆  |
+| prefix + J   | 下にリサイズ     | ★★☆  |
+| prefix + K   | 上にリサイズ     | ★★☆  |
+| prefix + L   | 右にリサイズ     | ★★☆  |
+| prefix + v   | 垂直分割         | ★★☆  |
+| prefix + s   | 水平分割         | ★★☆  |
+| prefix + C-k | ペインをキル     | ★☆☆  |
+| prefix + K   | ウィンドウをキル | ★★☆  |
 
 
 #### other

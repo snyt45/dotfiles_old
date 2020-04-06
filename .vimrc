@@ -49,6 +49,11 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'mattn/vim-maketable'
 " コード整形
 NeoBundle 'prettier/vim-prettier'
+" vim ステータスライン
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+" tmux ステータスライン
+NeoBundle 'edkolev/tmuxline.vim'
 
 " コードの自動補完
 NeoBundle 'Shougo/deoplete.nvim'
@@ -121,6 +126,12 @@ endif
 " ファイルタイプ
 "--------------------------------------------------------------- *
 filetype plugin indent on
+
+"*
+" ディレクトリ
+"--------------------------------------------------------------- *
+" カレントディレクトリをカレントバッファ(今開いているバッファ)の位置に自動的に変更
+:set autochdir
 
 "*
 " バックアップ/スワップ/アンドゥ/vimingoファイル
@@ -272,7 +283,7 @@ nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W
 " grep検索結果の再呼出
 nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 " バッファ一覧を開く
-nnoremap sb :unite buffer<Return>
+nnoremap sb :Unite buffer<Return>
 
 "*
 " ctrlp
@@ -280,6 +291,10 @@ nnoremap sb :unite buffer<Return>
 " ag入ってたらagで検索させる
 " ついでにキャッシュファイルからの検索もさせない
 if executable('ag')
+  " 日本語検索をoff
+  let g:ctrlp_use_migemo = 0
+  " あいまい検索をoff
+  let g:ctrlp_regexp = 1
   let g:ctrlp_use_caching = 0
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
 endif
@@ -338,3 +353,32 @@ vnoremap pre :Prettier<CR>
 "--------------------------------------------------------------- *
 " 起動時に有効
 let g:deoplete#enable_at_startup = 1
+
+"*
+" airline
+"--------------------------------------------------------------- *
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+"set guifont=Roboto\ Mono\ for\ Powerline:h12
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
+let g:airline_theme='badwolf'
+let g:airline_left_sep = '⮀'
+let g:airline_right_sep = '⮂'
+let g:airline#extensions#tabline#left_sep = '⮀'
+let g:airline#extensions#tabline#left_alt_sep = '⮀'
+"*
+" tmuxline
+"--------------------------------------------------------------- *
+let g:tmuxline_preset = {
+  \'a'    : '#S',
+  \'c'    : ['#(whoami)', '#(uptime | cud -d " " -f 1,2,3)'],
+  \'win'  : ['#I', '#W'],
+  \'cwin' : ['#I', '#W', '#F'],
+  \'x'    : '#(date)',
+  \'y'    : ['%R', '%a', '%Y'],
+  \'z'    : '#H'}
+"let g:tmuxline_theme = 'papercolor'

@@ -3,12 +3,16 @@ module.exports = {
 // 基本設定
 //////////////////////////////////////
   config: {
+    // Overrides for the verminal theme
+    verminal: {
+      fontFamily: '"Roboto Mono for Powerline"'
+    },
     // 安定バージョンの更新を受け取る
     updateChannel: 'stable',
     // フォントサイズ
-    fontSize: 10,
+    fontSize: 12,
     // フォントファミリー
-    fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"Roboto mono for Powerline", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
     // フォントの太さ
     fontWeight: 'normal',
     // 太字フォントの太さ
@@ -28,7 +32,7 @@ module.exports = {
     // ターミナルのメインテキストの色
     foregroundColor: '#fff',
     // ターミナルの背景色
-    backgroundColor: '#000',
+    backgroundColor: 'rgba(0,0,0,0.99)',
     // ターミナルでのテキスト選択の背景色/不透明度
     selectionColor: 'rgba(248,28,229,0.3)',
     // メインウィンドウの境界線とタブバーの色
@@ -82,7 +86,7 @@ module.exports = {
     // 選択中にOptionキー押下で列モード
     macOptionSelectionMode: 'vertical',
     // WebGLレンダラー
-    webGLRenderer: true,
+    webGLRenderer: false,
     // 一部の特殊文字を無視
     disableLigatures: false,
   },

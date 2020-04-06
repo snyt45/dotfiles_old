@@ -20,5 +20,7 @@
 !/.bash_profile
 !/.tmux.conf
 !/cheatsheets
+!/.tmux
+!/.tmux/tmuxline.conf
 
 !.gitignore
