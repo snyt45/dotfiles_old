@@ -232,6 +232,12 @@ nnoremap <silent> <C-j> :bprev<CR>
 " 前のバッファ
 nnoremap <silent> <C-k> :bnext<CR>
 
+"*
+" 便利系
+"--------------------------------------------------------------- *
+" 改行を挿入
+nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
+
 
 
 
@@ -259,6 +265,8 @@ inoremap <silent> っj <ESC>
 "*
 " vimfiler
 "--------------------------------------------------------------- *
+" vimfiler上で現在いるディレクトリを動的にカレントディレクトリに設定してくれる
+let g:vimfiler_enable_auto_cd = 1
 " vimデフォルトのエクスプローラをvimfilerで置き換える
 let g:vimfiler_as_default_explorer = 1
 " セーフモードを無効にした状態で起動
@@ -280,6 +288,8 @@ nnoremap sF :VimFilerExplorer -find<Return>
 " 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
+" grep時の結果画面を画面下で開く
+let g:unite_split_rule = 'botright'
 " unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
   " デフォルトのgrepコマンドをagにする
@@ -290,6 +300,8 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
 endif
 
+" ファイル内grep検索
+nnoremap <silent> ,/ :<C-u>Unite vimgrep:% -buffer-name=search-buffer<CR>
 " grep検索
 nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 " ディレクトリを指定してgrep検索
@@ -386,6 +398,7 @@ let g:airline_left_sep = '⮀'
 let g:airline_right_sep = '⮂'
 let g:airline#extensions#tabline#left_sep = '⮀'
 let g:airline#extensions#tabline#left_alt_sep = '⮀'
+
 "*
 " tmuxline
 "--------------------------------------------------------------- *
@@ -397,4 +410,3 @@ let g:tmuxline_preset = {
   \'x'    : '#(date)',
   \'y'    : ['%R', '%a', '%Y'],
   \'z'    : '#H'}
-"let g:tmuxline_theme = 'papercolor'

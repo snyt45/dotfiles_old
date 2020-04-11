@@ -7,6 +7,8 @@ if [ "$(uname)" == "Darwin" ]; then
   if [ -f ~/.bashrc ]; then
     . ~/.bashrc
   fi
+  # rbenvの設定を反映
+  eval "$(rbenv init -)"
 elif [ "$(expr substr $(uname -s) 1 5)" == "MINGW" ]; then
   echo Windows
   # bachrcを読込み
