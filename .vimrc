@@ -210,17 +210,17 @@ nnoremap sv :<C-u>vs<CR>
 " タブ
 "--------------------------------------------------------------- *
 " 次のタブ
-nnoremap <silent> tl :tabnext<CR>
+nnoremap <silent> <C-l> :tabnext<CR>
 " 前のタブ
-nnoremap <silent> th :tabprevious<CR>
+nnoremap <silent> <C-h> :tabprevious<CR>
 " 新規タブ
 nnoremap <silent> tn :tablast <bar> tabnew<CR>
 " タブを閉じる
 nnoremap <silent> tx :tabclose<CR>
 " タブを右に移動
-nnoremap <silent> <C-l> :+tabmove<CR>
+nnoremap <silent> tl :+tabmove<CR>
 " タブを左に移動
-nnoremap <silent> <C-h> :-tabmove<CR>
+nnoremap <silent> th :-tabmove<CR>
 
 "*
 " バッファ
