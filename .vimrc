@@ -54,6 +54,8 @@ NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 " tmux ステータスライン
 NeoBundle 'edkolev/tmuxline.vim'
+" solarized
+NeoBundle 'altercation/vim-colors-solarized'
 
 " コードの自動補完
 NeoBundle 'Shougo/deoplete.nvim'
@@ -104,10 +106,9 @@ set listchars=eol:↲,tab:>.,trail:_
 set number
 " ハイライト表示
 set hlsearch
-hi Search ctermbg=LightYellow
-hi Search ctermfg=Red
 " シンタックスハイライト
 syntax on
+colorscheme solarized
 
 "*
 " ステータスライン
@@ -333,12 +334,14 @@ endif
 "*
 " fugitive
 "--------------------------------------------------------------- *
-" Git 過去の変更を辿る
+" Git 現在のソースと過去の履歴を比較
 nnoremap <silent> <Space>gb :Gblame<CR>
 " Git 差分を表示する
 nnoremap <silent> <Space>gd :Gdiff<CR>
 " Git ステータス画面を開く
-nnoremap <silent> <Space>gs :Gstatus<CR>
+nnoremap <silent> <Space>gs :tab sp<CR>:Gstatus<CR>:only<CR>
+" Git コミット履歴一覧
+nnoremap <silent> <Space>gh :tab sp<CR>:0Glog<CR>
 
 "*
 " vim-gitgutte

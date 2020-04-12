@@ -33,3 +33,10 @@ alias hs='history | grep'
 #--------------------------------------------------
 # ホームディレクトリ配下のbinを追加
 export PATH=$PATH:$HOME/bin
+
+#--------------------------------------------------
+# カラースキーマ
+#--------------------------------------------------
+# solarized https://bit.ly/3ehngES
+source $LOCALAPPDATA/mintty-colors-solarized/sol.dark
+eval `dircolors $LOCALAPPDATA/dircolors-solarized/dircolors.ansi-dark`
