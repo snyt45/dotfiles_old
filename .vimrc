@@ -108,6 +108,7 @@ set number
 set hlsearch
 " シンタックスハイライト
 syntax on
+set background=dark
 colorscheme solarized
 
 "*
