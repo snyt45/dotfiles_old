@@ -295,15 +295,23 @@ let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 " grep時の結果画面を画面下で開く
 let g:unite_split_rule = 'botright'
-" unite grep に ag(The Silver Searcher) を使う
-if executable('ag')
-  " デフォルトのgrepコマンドをagにする
-  let g:unite_source_grep_command = 'ag'
-  " grep時のデフォルトオプションを設定
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-  " grep時の再帰オプションを設定
-  let g:unite_source_grep_recursive_opt = ''
+
+" unite grepにjvgrepを使う
+if executable('jvgrep')
+    let g:unite_source_grep_command = 'jvgrep'
+    let g:unite_source_grep_default_opts = '-r'
+    let g:unite_source_grep_recursive_opt = '-R'
 endif
+
+" unite grep に ag(The Silver Searcher) を使う
+" if executable('ag')
+  " デフォルトのgrepコマンドをagにする
+  " let g:unite_source_grep_command = 'ag'
+  " grep時のデフォルトオプションを設定
+  " let g:unite_source_grep_default_opts = '-a --nogroup --nocolor --column'
+  " grep時の再帰オプションを設定
+  " let g:unite_source_grep_recursive_opt = ''
+" endif
 
 " ファイル内grep検索
 nnoremap <silent> ,/ :<C-u>Unite vimgrep:% -buffer-name=search-buffer<CR>
