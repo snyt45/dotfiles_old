@@ -90,7 +90,8 @@ set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 " 改行コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac
 " □や○文字が崩れる問題を解決
-set ambiwidth=double
+" airline使用時､記号の横に隙間ができるので一旦オフ
+" set ambiwidth=double
 " 不可視文字を表示
 set list
 " 行末を'↲'、タブを'>'、末尾のスペースを'_'で表示
@@ -103,6 +104,8 @@ set listchars=eol:↲,tab:>.,trail:_
 set number
 " ハイライト表示
 set hlsearch
+hi Search ctermbg=LightYellow
+hi Search ctermfg=Red
 " シンタックスハイライト
 syntax on
 
@@ -386,18 +389,56 @@ let g:deoplete#enable_at_startup = 1
 " airline
 "--------------------------------------------------------------- *
 set laststatus=2
+set t_Co=256
+"set guifont=Roboto\ Mono\ for\ Powerline:h12
+
+let g:airline_theme='badwolf'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-"set guifont=Roboto\ Mono\ for\ Powerline:h12
 let g:Powerline_symbols = 'fancy'
-set t_Co=256
-let g:airline_theme='badwolf'
-let g:airline_left_sep = '⮀'
-let g:airline_right_sep = '⮂'
-let g:airline#extensions#tabline#left_sep = '⮀'
-let g:airline#extensions#tabline#left_alt_sep = '⮀'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+if has("mac")
+" mac用の設定
+  let g:airline_left_sep = '⮀'
+  let g:airline_right_sep = '⮂'
+  let g:airline#extensions#tabline#left_sep = '⮀'
+  let g:airline#extensions#tabline#left_alt_sep = '⮀'
+elseif has("unix")
+" unix固有の設定
+" なぜかwindowsOSでもunix､win32unixに分類されるため､ここにwindowsの設定を書く
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '☰'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.maxlinenr = '㏑'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.notexists = '∄'
+  let g:airline_symbols.whitespace = 'Ξ'
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = '☰'
+  let g:airline_symbols.maxlinenr = ''
+endif
 
 "*
 " tmuxline
