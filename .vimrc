@@ -31,16 +31,12 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
 " ファイル操作をサポート(unite.vimとvimprocに依存)
 NeoBundle 'Shougo/vimfiler'
-" スクロール操作をなめらかにする
-" NeoBundle 'yuttie/comfortable-motion.vim'
 " ウィンドウサイズの変更を簡単・高速にする
 NeoBundle 'simeji/winresizer'
 " Gitで管理しているファイル編集時に差分を表現する記号が左端に表示
 NeoBundle 'airblade/vim-gitgutter'
 " Agで高速grep
 NeoBundle 'rking/ag.vim'
-" Ctrl+pでカレントディレクトリのファイル名絞り込み
-" NeoBundle 'ctrlpvim/ctrlp.vim'
 " ブラウザでMarkdownプレビュー用
 NeoBundle 'tyru/open-browser.vim'
 " Markdownプレビュー
@@ -54,10 +50,8 @@ NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 " tmux ステータスライン
 NeoBundle 'edkolev/tmuxline.vim'
-if has("unix")
-  " solarized
-  NeoBundle 'altercation/vim-colors-solarized'
-endif
+" solarized
+NeoBundle 'altercation/vim-colors-solarized'
 
 " コードの自動補完
 NeoBundle 'Shougo/deoplete.nvim'
@@ -93,9 +87,6 @@ set fileencoding=utf-8
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 " 改行コードの自動判別. 左側が優先される
 set fileformats=unix,dos,mac
-" □や○文字が崩れる問題を解決
-" airline使用時､記号の横に隙間ができるので一旦オフ
-" set ambiwidth=double
 " 不可視文字を表示
 set list
 " 行末を'↲'、タブを'>'、末尾のスペースを'_'で表示
@@ -316,17 +307,6 @@ if executable('jvgrep')
     let g:unite_source_grep_recursive_opt = '-R'
 endif
 
-" unite grep に ag(The Silver Searcher) を使う
-" if executable('ag')
-  " デフォルトのgrepコマンドをagにする
-  " let g:unite_source_grep_command = 'ag'
-  " grep時のデフォルトオプションを設定
-  " let g:unite_source_grep_default_opts = '-a --nogroup --nocolor --column'
-  " grep時の再帰オプションを設定
-  " let g:unite_source_grep_recursive_opt = ''
-" endif
-
-
 " ブックマーク一覧
 nnoremap <silent> ,b :<C-u>Unite bookmark<CR>
 " ファイル名検索
@@ -343,20 +323,6 @@ nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W
 nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 " バッファ一覧を開く
 nnoremap sb :Unite buffer<Return>
-
-"*
-" ctrlp
-"--------------------------------------------------------------- *
-" ag入ってたらagで検索させる
-" ついでにキャッシュファイルからの検索もさせない
-" if executable('ag')
-  " 日本語検索をoff
-  " let g:ctrlp_use_migemo = 0
-  " あいまい検索をoff
-  " let g:ctrlp_regexp = 1
-  " let g:ctrlp_use_caching = 0
-  " let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
-" endif
 
 "*
 " fugitive
