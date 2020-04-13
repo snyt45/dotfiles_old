@@ -54,8 +54,10 @@ NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 " tmux ステータスライン
 NeoBundle 'edkolev/tmuxline.vim'
-" solarized
-NeoBundle 'altercation/vim-colors-solarized'
+if has("unix")
+  " solarized
+  NeoBundle 'altercation/vim-colors-solarized'
+endif
 
 " コードの自動補完
 NeoBundle 'Shougo/deoplete.nvim'
@@ -111,7 +113,12 @@ set hlsearch
 " シンタックスハイライト
 syntax on
 set background=dark
-colorscheme solarized
+
+if has("mac")
+  colorscheme default
+elseif has("unix")
+  colorscheme solarized
+endif
 
 "*
 " ステータスライン
