@@ -344,7 +344,7 @@ set signcolumn=yes
 " 記号更新のタイミング
 set updatetime=100
 " 行ハイライト
-let g:gitgutter_highlight_lines = 1
+let g:gitgutter_highlight_lines = 0
 " 最大表示数
 let g:gitgutter_max_signs = 2000
 " git diffのコマンドオプション
