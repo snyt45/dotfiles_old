@@ -98,6 +98,8 @@ set fileformats=unix,dos,mac
 set list
 " 行末を'↲'、タブを'>'、末尾のスペースを'_'で表示
 set listchars=eol:↲,tab:>.,trail:_
+" ファイル末尾の改行をそのまま保持｡あれば保持｡なくてもないのを保持｡
+set nofixendofline
 
 "*
 " 表示
@@ -319,7 +321,7 @@ endif
 
 
 " ブックマーク一覧
-nnoremap <silent> <C-b> :<C-u>Unite bookmark<CR>
+nnoremap <silent> ,b :<C-u>Unite bookmark<CR>
 " ファイル名検索
 nnoremap <silent> <C-p> :<C-u>Unite file_rec/async<CR>
 " ファイル内grep検索
@@ -362,10 +364,21 @@ nnoremap <silent> <Space>gs :tab sp<CR>:Gstatus<CR>:only<CR>
 nnoremap <silent> <Space>gh :tab sp<CR>:0Glog<CR>
 
 "*
-" vim-gitgutte
+" vim-gitgutter
 "--------------------------------------------------------------- *
+" vim-gitgutter用の表示列をあらかじめ表示
+set signcolumn=yes
 " 記号更新のタイミング
-set updatetime=250
+set updatetime=100
+" 行ハイライト
+let g:gitgutter_highlight_lines = 1
+" 最大表示数
+let g:gitgutter_max_signs = 2000
+" git diffのコマンドオプション
+let g:gitgutter_diff_args = '-w'
+
+" 行ハイライトトグル
+nnoremap <silent> gl :GitGutterLineHighlightsToggle<CR>
 
 "*
 " Previm
