@@ -144,9 +144,6 @@
 | prefix + L   | 右にリサイズ     | ★★☆  |
 | prefix + v   | 垂直分割         | ★★☆  |
 | prefix + s   | 水平分割         | ★★☆  |
-| prefix + C-k | ペインをキル     | ★☆☆  |
-| prefix + K   | ウィンドウをキル | ★★☆  |
-
 
 #### other
 

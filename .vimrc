@@ -32,7 +32,7 @@ NeoBundle 'Shougo/vimproc'
 " ファイル操作をサポート(unite.vimとvimprocに依存)
 NeoBundle 'Shougo/vimfiler'
 " スクロール操作をなめらかにする
-NeoBundle 'yuttie/comfortable-motion.vim'
+" NeoBundle 'yuttie/comfortable-motion.vim'
 " ウィンドウサイズの変更を簡単・高速にする
 NeoBundle 'simeji/winresizer'
 " Gitで管理しているファイル編集時に差分を表現する記号が左端に表示
@@ -40,7 +40,7 @@ NeoBundle 'airblade/vim-gitgutter'
 " Agで高速grep
 NeoBundle 'rking/ag.vim'
 " Ctrl+pでカレントディレクトリのファイル名絞り込み
-NeoBundle "ctrlpvim/ctrlp.vim"
+" NeoBundle 'ctrlpvim/ctrlp.vim'
 " ブラウザでMarkdownプレビュー用
 NeoBundle 'tyru/open-browser.vim'
 " Markdownプレビュー
@@ -295,6 +295,10 @@ let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 " grep時の結果画面を画面下で開く
 let g:unite_split_rule = 'botright'
+" ファイル一覧取得時､画像を除く
+call unite#custom#source('file_rec/async', 'ignore_pattern', '\(png\|gif\|jpeg\|jpg\)$')
+" キャッシュファイルの上限
+let g:unite_source_rec_max_cache_files = 5000
 
 " unite grepにjvgrepを使う
 if executable('jvgrep')
@@ -313,6 +317,11 @@ endif
   " let g:unite_source_grep_recursive_opt = ''
 " endif
 
+
+" ブックマーク一覧
+nnoremap <silent> <C-b> :<C-u>Unite bookmark<CR>
+" ファイル名検索
+nnoremap <silent> <C-p> :<C-u>Unite file_rec/async<CR>
 " ファイル内grep検索
 nnoremap <silent> ,/ :<C-u>Unite vimgrep:% -buffer-name=search-buffer<CR>
 " grep検索
@@ -331,14 +340,14 @@ nnoremap sb :Unite buffer<Return>
 "--------------------------------------------------------------- *
 " ag入ってたらagで検索させる
 " ついでにキャッシュファイルからの検索もさせない
-if executable('ag')
+" if executable('ag')
   " 日本語検索をoff
-  let g:ctrlp_use_migemo = 0
+  " let g:ctrlp_use_migemo = 0
   " あいまい検索をoff
-  let g:ctrlp_regexp = 1
-  let g:ctrlp_use_caching = 0
-  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
-endif
+  " let g:ctrlp_regexp = 1
+  " let g:ctrlp_use_caching = 0
+  " let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup -g ""'
+" endif
 
 "*
 " fugitive
