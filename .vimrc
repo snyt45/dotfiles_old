@@ -328,7 +328,7 @@ nnoremap <silent> ,b :<C-u>Unite bookmark<CR>
 " ファイル名検索
 nnoremap <silent> <C-p> :<C-u>Unite file_rec/async<CR>
 " ファイル内grep検索
-nnoremap <silent> ,/ :<C-u>Unite vimgrep:% -buffer-name=search-buffer<CR>
+nnoremap <silent> ,gg :<C-u>Unite vimgrep:% -buffer-name=search-buffer<CR>
 " grep検索
 nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 " ディレクトリを指定してgrep検索
@@ -478,3 +478,14 @@ let g:tmuxline_preset = {
   \'x'    : '#(date)',
   \'y'    : ['%R', '%a', '%Y'],
   \'z'    : '#H'}
+
+
+"*
+" matchit.vim
+"--------------------------------------------------------------- *
+" %でRuby関数の開始タグと終了タグに移動 https://bit.ly/3efSe0t
+source $VIMRUNTIME/macros/matchit.vim
+augroup matchit
+  au!
+  au FileType ruby let b:match_words = '\<\(module\|class\|def\|begin\|do\|if\|unless\|case\)\>:\<\(elsif\|when\|rescue\)\>:\<\(else\|ensure\)\>:\<end\>'
+augroup END
