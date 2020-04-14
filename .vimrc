@@ -195,6 +195,12 @@ nnoremap <Leader>ep :e ~/.dotfiles/.bash_profile<CR>
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
 "*
+" 移動
+"--------------------------------------------------------------- *
+nnoremap <Space>j 5j
+nnoremap <Space>k 5k
+
+"*
 " ウィンドウ
 "--------------------------------------------------------------- *
 " 下に移動
@@ -282,10 +288,20 @@ let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_marked_file_icon = '✓'
 
-" カレントバッファのディレクトリを開く
-nnoremap sf :VimFilerBufferDir<Return>
-" 作業ディレクトリをIDE風に開く
-nnoremap sF :VimFilerExplorer -find<Return>
+" カレントバッファのディレクトリを開く(トグル)
+nnoremap sf :VimFilerBufferDir -split -simple -winwidth=45 -toggle -no-quit<Return>
+
+" カレントディレクトリ上で/で絞り込む https://bit.ly/2VnXKFu
+function! UniteFileCurrentDir()
+  let s  = ':Unite file -start-insert -path='
+  let s .= vimfiler#helper#_get_file_directory()
+
+  execute s
+endfunction
+
+autocmd FileType vimfiler
+  \ nnoremap <buffer><silent>/
+  \ :call UniteFileCurrentDir() <CR>
 
 "*
 " unite
@@ -352,6 +368,10 @@ let g:gitgutter_diff_args = '-w'
 
 " 行ハイライトトグル
 nnoremap <silent> gl :GitGutterLineHighlightsToggle<CR>
+" 次に進む
+nmap <silent> <C-g><C-n> :GitGutterNextHunk<CR>
+" 前に戻る
+nmap <silent> <C-g><C-p> :GitGutterPrevHunk<CR>
 
 "*
 " Previm
